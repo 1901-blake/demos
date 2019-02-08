@@ -1,0 +1,24 @@
+version: 0.1
+phases:
+  install: 
+    commands:
+      - echo Installing source NPM dependencies...
+      - cd 4week\my-app-redux && npm install
+  build:
+    commands:
+      - echo Build started on `date`
+      - cd 4week\my-app-redux && npm run ${BUILD_COMMAND}
+  post_build:
+    commands:
+      - echo "$CODEBUILD_BUILD_SUCCEEDING"
+      # if build succeeds copy the dist folder into the s3 bucket
+      - |
+        if [ "$CODEBUILD_BUILD_SUCCEEDING" = "1" ]; then
+            cd 4week\my-app-redux && aws s3 cp "build" "s3://${S3_BUCKET}" "--recursive";
+            echo "Build completed on date";
+        fi
+artifacts:
+  files:
+    - '**/*'
+  base-directory: 'build'
+  discard-paths: yes
