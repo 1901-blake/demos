@@ -1,0 +1,4 @@
+2019-02-15 14:47:48  [DEBUG] before any test has run
+2019-02-15 14:47:49  [DEBUG] runs once before each and every test
+2019-02-15 14:47:49  [DEBUG] After each and every test
+2019-02-15 14:47:49  [DEBUG] After all tests have been run
