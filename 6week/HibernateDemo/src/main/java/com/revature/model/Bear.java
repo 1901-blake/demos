@@ -15,8 +15,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
+
 @Table(name = "bears")
 @Entity
+@JsonFilter("depth_3")
 public class Bear {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +30,7 @@ public class Bear {
 	private String breed;
 	private int legs;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cave_id")
 	private Cave cave;
 

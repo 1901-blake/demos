@@ -6,13 +6,17 @@ import java.util.Set;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.model.Bear;
+import com.revature.model.Cave;
 import com.revature.util.SessionFactoryUtil;
 
 public class BearDaoHibernate implements BearDao {
@@ -70,11 +74,16 @@ public class BearDaoHibernate implements BearDao {
 		Session s = sf.openSession();
 		Transaction t = s.beginTransaction();
 		Bear b = (Bear) s.get(Bear.class, id);
-		
 		// automatic dirty checking
 //		b.setColor("Blue"); // at this point the object would be persistent and changes will be reflected
 			
-		log.info(b);
+//		log.info(b.getId());
+		
+		Hibernate.initialize(b.getCave());
+		Hibernate.initialize(b.getCave().getResidents());
+		Hibernate.initialize(b.getCubs());
+		
+		
 		t.commit();
 		s.close(); // return the connection to the pool
 		return b;
