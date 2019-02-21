@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonFilter;
 
 @Table(name = "bears")
 @Entity
-@JsonFilter("depth_3")
+@JsonFilter("depth_2")
 public class Bear {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

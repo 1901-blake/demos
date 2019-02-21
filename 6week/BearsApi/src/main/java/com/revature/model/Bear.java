@@ -15,11 +15,13 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Table(name = "bears")
 @Entity
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+@JsonFilter("depth_3")
 public class Bear {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
