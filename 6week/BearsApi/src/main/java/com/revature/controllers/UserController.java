@@ -45,10 +45,10 @@ public class UserController {
 	public ResponseEntity<AppUser> findById(@PathVariable int id) {
 		for (AppUser user : users) {
 			if (user.getId() == id) {
-				return new ResponseEntity<AppUser>(user, HttpStatus.OK);
 			}
 		}
 		return new ResponseEntity<AppUser>(HttpStatus.NOT_FOUND);
+		
 	}
 	
 	@PostMapping
