@@ -14,6 +14,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -28,8 +30,13 @@ public class Bear {
 	@Column(name = "bear_id")
 	private int id;
 
+	@NotNull
 	private String color;
+
+	@NotNull
 	private String breed;
+	
+	@Min(0)
 	private int legs;
 
 	@ManyToOne(fetch = FetchType.LAZY)

@@ -17,4 +17,7 @@ public interface BearService {
 	List<Bear> findByLegs(int legs);
 	List<Bear> findByColor(String color);
 	List<Bear> findByBreed(String breed);
+	List<Bear> findByCaveType(String caveType);
+
+	List<Bear> saveMultiple(List<Bear> bears);
 }

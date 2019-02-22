@@ -46,6 +46,7 @@ export class NavComponent extends React.Component<INavProps> {
                 <div className="dropdown-item"><Link to="/tic-tac-toe" className="unset-anchor nav-link active">Tic Tac Toe Game</Link></div>
                 <div className="dropdown-item"><Link to="/chuck-norris" className="unset-anchor nav-link active">Chuck Norris Jokes</Link></div>
                 <div className="dropdown-item"><Link to="/pokemon" className="unset-anchor nav-link active">Pokemon</Link></div>
+                <div className="dropdown-item"><Link to="/bears" className="unset-anchor nav-link active">Bears</Link></div>
               </div>
             </li>
             <li className="nav-item active">

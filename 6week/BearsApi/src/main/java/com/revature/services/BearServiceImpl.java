@@ -2,6 +2,9 @@ package com.revature.services;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+import javax.transaction.Transactional.TxType;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +17,11 @@ public class BearServiceImpl implements BearService {
 	@Autowired
 	private BearRepo bearRepo;
 
+	@Transactional
 	@Override
 	public Bear save(Bear b) {
-		// TODO Auto-generated method stub
-		return null;
+		b.setId(0);
+		return bearRepo.save(b);
 	}
 
 	@Override
@@ -63,6 +67,23 @@ public class BearServiceImpl implements BearService {
 	@Override
 	public List<Bear> findByBreed(String breed) {
 		return bearRepo.findByBreed(breed);
+	}
+
+	@Override
+	public List<Bear> findByCaveType(String caveType) {
+		return bearRepo.findByCaveCaveTypeIgnoringCase(caveType);
+	}
+
+
+	@Transactional
+	@Override
+	public List<Bear> saveMultiple(List<Bear> bears) {
+		bears.forEach(bear -> {
+			save(bear);
+		});
+		
+		// If I throw new RuntimeException Here it prevents transaction from commiting and rolls back
+		return bears;
 	}
 
 }

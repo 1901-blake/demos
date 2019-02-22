@@ -67,6 +67,8 @@
 	</dependencies>
 
 	<build>
+		<!-- What mvn will build jar to -->
+		<finalName>BearsApi</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

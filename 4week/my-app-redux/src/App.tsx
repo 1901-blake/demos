@@ -12,6 +12,7 @@ import { SecondComponent } from './components/second/Second.component';
 import { NestedComponent } from './components/nested/Nested.component';
 import { Provider } from 'react-redux';
 import { store } from './Store';
+import { BearsComponent } from './components/bears/Bears.component';
 
 class App extends Component {
   render() {
@@ -28,6 +29,7 @@ class App extends Component {
               <Route path="/first" component={FirstComponent} />
               <Route path="/second" component={SecondComponent} />
               <Route path="/nested" component={NestedComponent} />
+              <Route path="/bears" component={BearsComponent} />
             </div>
           </div>
         </BrowserRouter>

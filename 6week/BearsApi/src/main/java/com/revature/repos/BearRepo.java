@@ -8,5 +8,7 @@ import com.revature.model.Bear;
 
 public interface BearRepo extends JpaRepository<Bear, Integer> {
 	List<Bear> findByBreed(String breed);
-	
+
+	List<Bear> findByCaveCaveTypeIgnoringCase(String caveType);
+
 }

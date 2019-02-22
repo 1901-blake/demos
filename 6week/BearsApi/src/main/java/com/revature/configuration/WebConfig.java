@@ -27,7 +27,7 @@ public class WebConfig implements WebMvcConfigurer {
         MappingJackson2HttpMessageConverter messageConverter = new MappingJackson2HttpMessageConverter();
 
         ObjectMapper mapper = new ObjectMapper();
-        //Registering Hibernate4Module to support lazy objects
+        //Registering Hibernate5Module to support lazy objects
 //        mapper.registerModule(new Hibernate5Module());
         SimpleFilterProvider depthFilters = new SimpleFilterProvider().addFilter("depth_1", new DeepFieldFilter(1))
                 .addFilter("depth_2", new DeepFieldFilter(2))
