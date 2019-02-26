@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: discovery-service
+    
+server:
+  port: 8675
+  
+eureka:
+  client:
+    register-with-eureka: false
