@@ -1,0 +1,16 @@
+server:
+  port: 8222
+  
+spring:
+  application:
+    name: account-service
+ 
+eureka:
+  client:
+    enabled: true
+    service-url:
+      defaultZone: http://localhost:8675/eureka
+# You would not actually want these values in prod but this is how to config heart beat
+  instance:
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 2

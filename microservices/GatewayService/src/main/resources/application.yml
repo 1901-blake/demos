@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: gateway-service
+  
+server:
+  port: 8888
+  
+zuul:
+  routes:
+    users:
+      path: /users/**
+      service-id: user-service
+      strip-prefix: false
+    accounts:
+      path: /accounts/**
+      service-id: account-service
+      strip-prefix: false
+      
+eureka:
+  client:
+    enabled: true
+    service-url:
+      defaultZone: http://localhost:8675/eureka
+# You would not actually want these values in prod but this is how to config heart beat
+  instance:
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 2
