@@ -1,22 +1,26 @@
 package com.revature.model;
 
+import java.util.List;
+
 public class AppUser {
 	private int id;
 	private String name;
 	private String password;
 	private String role;
+	private List<Account> accounts;
 
 	public AppUser() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public AppUser(int id, String name, String password, String role) {
+	public AppUser(int id, String name, String password, String role, List<Account> accounts) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.password = password;
 		this.role = role;
+		this.accounts = accounts;
 	}
 
 	public int getId() {
@@ -51,10 +55,19 @@ public class AppUser {
 		this.role = role;
 	}
 
+	public List<Account> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(List<Account> accounts) {
+		this.accounts = accounts;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((accounts == null) ? 0 : accounts.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
@@ -71,6 +84,11 @@ public class AppUser {
 		if (getClass() != obj.getClass())
 			return false;
 		AppUser other = (AppUser) obj;
+		if (accounts == null) {
+			if (other.accounts != null)
+				return false;
+		} else if (!accounts.equals(other.accounts))
+			return false;
 		if (id != other.id)
 			return false;
 		if (name == null) {
@@ -93,7 +111,8 @@ public class AppUser {
 
 	@Override
 	public String toString() {
-		return "AppUser [id=" + id + ", name=" + name + ", password=" + password + ", role=" + role + "]";
+		return "AppUser [id=" + id + ", name=" + name + ", password=" + password + ", role=" + role + ", accounts="
+				+ accounts + "]";
 	}
 
 }
